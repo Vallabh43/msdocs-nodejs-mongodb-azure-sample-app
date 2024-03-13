@@ -14,3 +14,7 @@ a {
 .bg-azure-light-gray {
   background-color: #EBEBEB;
 }
+
+.hidden {
+  display: none;
+}

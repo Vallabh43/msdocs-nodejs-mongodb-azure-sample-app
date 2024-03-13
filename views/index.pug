@@ -7,14 +7,15 @@ block content
         div(class='col-md-2 align-bottom')
           label(for="taskName" class='fs-5') New Product
         div(class='col-md-8')
-          input(class="form-control form-control-sm" type="text" name='taskName', placeholder="Enter new product here" )
+          input(class="form-control form-control-sm" type="text" name='taskName' placeholder="Enter new product here" )
         div(class='col-md-2 text-end')
           button(class='btn btn-success btn-sm' type='submit') Add Product
 
+  button#toggleProducts(class='btn btn-primary btn-sm my-2') List Products // Changed the button to toggle products
 
   h5(class='my-2') Products
 
-  div(class='row mb-3 border-bottom border-3')
+  div#productList(class='row mb-3 border-bottom border-3 hidden') // Added an id to the div containing product list and hidden class
     div(class='col-md-6 fw-bold') Product
     div(class='col-md-2 fw-bold') Created
     div(class='col-md-4 fw-bold') Action
@@ -28,3 +29,17 @@ block content
           input(type='hidden' name='_id' value=`${task._id}`)
           button(class='btn btn-danger btn-sm mx-1') Delete
 
+script.
+  const toggleButton = document.getElementById('toggleProducts');
+  const productList = document.getElementById('productList');
+
+  toggleButton.addEventListener('click', () => {
+    productList.classList.toggle('hidden');
+
+    // Toggle button text
+    if (toggleButton.textContent === 'List Products') {
+      toggleButton.textContent = 'Hide Products';
+    } else {
+      toggleButton.textContent = 'List Products';
+    }
+  });
