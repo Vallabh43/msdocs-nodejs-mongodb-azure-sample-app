@@ -11,14 +11,17 @@ router.get('/', function(req, res, next) {
       const completedTasks = tasks.filter(task => task.completed === true);
 
       console.log(`Total tasks: ${tasks.length}   Current tasks: ${currentTasks.length}    Completed tasks:  ${completedTasks.length}`)
-      res.render('index', { currentTasks: currentTasks, completedTasks: completedTasks });
+      
+      // Pass a variable to indicate the initial visibility state of the product list
+      const productListVisibility = req.query.showProducts === 'true'; // Check if 'showProducts' query parameter is set to 'true'
+
+      res.render('index', { currentTasks: currentTasks, completedTasks: completedTasks, productListVisibility: productListVisibility });
     })
     .catch((err) => {
       console.log(err);
       res.send('Sorry! Something went wrong.');
     });
 });
-
 
 router.post('/addTask', function(req, res, next) {
   const taskName = req.body.taskName;
@@ -55,7 +58,6 @@ router.post('/completeTask', function(req, res, next) {
     });
 });
 
-
 router.post('/deleteTask', function(req, res, next) {
   const taskId = req.body._id;
   const completedDate = Date.now();
@@ -68,6 +70,5 @@ router.post('/deleteTask', function(req, res, next) {
       res.send('Sorry! Something went wrong.');
     });
 });
-
 
 module.exports = router;
