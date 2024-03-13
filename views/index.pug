@@ -29,17 +29,17 @@ block content
           input(type='hidden' name='_id' value=`${task._id}`)
           button(class='btn btn-danger btn-sm mx-1') Delete
 
-script.
-  const toggleButton = document.getElementById('toggleProducts');
-  const productList = document.getElementById('productList');
+  script.
+    const toggleButton = document.getElementById('toggleProducts');
+    const productList = document.getElementById('productList');
 
-  toggleButton.addEventListener('click', () => {
-    productList.classList.toggle('hidden');
+    toggleButton.addEventListener('click', () => {
+      productList.classList.toggle('hidden');
 
-    // Toggle button text
-    if (toggleButton.textContent === 'List Products') {
-      toggleButton.textContent = 'Hide Products';
-    } else {
-      toggleButton.textContent = 'List Products';
-    }
-  });
+      // Toggle button text
+      if (toggleButton.textContent === 'List Products') {
+        toggleButton.textContent = 'Hide Products';
+      } else {
+        toggleButton.textContent = 'List Products';
+      }
+    });
